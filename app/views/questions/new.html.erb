@@ -1,2 +1,7 @@
-<h1>Questions#new</h1>
-<p>Find me in app/views/questions/new.html.erb</p>
+<h1>Ask a question</h1>
+
+<%= simple_form_for @question do |q| %>
+  <%= q.input :body %>
+  <%= q.button :submit %>
+
+<% end %>
