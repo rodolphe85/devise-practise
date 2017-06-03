@@ -7,7 +7,6 @@ class QuestionsController < ApplicationController
   end
 
   def create
-
     @question = current_user.questions.build(question_params)
 
     if @question.save
@@ -17,7 +16,19 @@ class QuestionsController < ApplicationController
     end
   end
 
-  def edit
+  def edit #GET
+    if current_user
+    @question = Question.find(params[:id])
+    end
+  end
+
+  def update #patch
+    @question = Question.find(params[:id])
+      if @question.update_attributes(question_params)
+        redirect_to root_path
+      else
+        redirect_to edit_question_path
+      end
   end
 
   def show
@@ -26,6 +37,13 @@ class QuestionsController < ApplicationController
 
   def index
     @questions = Question.all
+  end
+
+  def destroy
+    @question = Question.find(params[:id])
+    @question.destroy
+    flash.now[:danger] = "Question deleted!"
+    redirect_to root_path
   end
 
   private

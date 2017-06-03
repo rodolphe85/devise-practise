@@ -1,7 +1,14 @@
-<h1>Questions#index</h1>
 
-<% @questions.each do |q| %>
+    <div class="text-center"><h1>Questions</h1></div><br>
+    <div class="index">
+    <% @questions.each do |q| %>
+      <ul>
+        <li><%= q.body %></li>
+        <li><%= link_to "Delete", question_path(q),
+        method: :delete, data: { confirm: 'Are you sure ?' } %> |
+         <%= link_to "Edit", edit_question_path(q) %> |
+         <%= link_to "Answer" %></li>
+      </ul>
+    <% end %>
+    </div>
 
-<%= q.body %>
-
-<% end %>
