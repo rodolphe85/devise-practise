@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
 
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index]
 
   def new
     @question = Question.new
@@ -36,7 +36,7 @@ class QuestionsController < ApplicationController
   end
 
   def index
-    @questions = Question.all
+    @questions = Question.order('created_at DESC')
   end
 
   def destroy
