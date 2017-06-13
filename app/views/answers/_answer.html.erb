@@ -1,5 +1,13 @@
-<p><%= answer.content %></p>
-
-<%= link_to "Edit", edit_question_answer_path(answer.question, answer) %>
+<ul>
+<li><P><%= answer.content %></P></li>
+<li class="signature">Posted by <%= answer.user.name %> <%= time_ago_in_words(answer.created_at) %> ago</li>
+<% if answer.user_id == current_user.id %>
+<li><%= link_to "Edit", edit_question_answer_path(answer.question, answer) %> |
 <%= link_to "delete", question_answer_path(answer.question, answer), method: :delete,
-data: { confirm: "Are you sure?"} %>
+data: { confirm: "Are you sure?"} %></li>
+<% end %>
+</ul>
+<br>
+
+
+

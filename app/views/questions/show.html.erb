@@ -1,8 +1,9 @@
 <h2><%= @question.body %></h2>
+<li class="signature">Posted by <%= @question.user.name %> <%= time_ago_in_words(@question.created_at) %> ago </li>
 
- <br><br>
-
-<%= render @question.answers %>
+<br>
+<br>
+<%= render @question.answers %> <br>
 <%= render 'answers/form' %>
 
 

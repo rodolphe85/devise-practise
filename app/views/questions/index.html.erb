@@ -1,17 +1,19 @@
 
     <div class="text-center"><h1>Questions</h1></div><br>
-    <div class="index">
+
     <% @questions.each do |q| %>
       <ul>
         <li><h3><%= link_to(q.body, question_path(q)) %></h3></li>
         <li>by: <%= q.user.name %></li><br>
-        <% if current_user.id == q.user_id %>
+        <%#= render @question.answers %>
+        <% if current_user == q.user_id %>
         <li><%= link_to "Delete", question_path(q),
         method: :delete, data: { confirm: 'Are you sure ?' } %> |
          <%= link_to "Edit", edit_question_path(q) %> |
          <% end %>
          <%= link_to "Answer", new_question_answer_path(q) %></li>
       </ul>
+
     <% end %>
-    </div>
+
 
