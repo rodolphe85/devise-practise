@@ -1,0 +1,7 @@
+<h3>Edit Answer</h3>
+
+<%= simple_form_for ([@question, @answer])  do |e| %>
+
+  <%= e.input :content, label: "Answer" %>
+  <%= e.button :submit %>
+  <% end %>

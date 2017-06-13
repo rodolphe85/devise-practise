@@ -1,0 +1,5 @@
+<p><%= answer.content %></p>
+
+<%= link_to "Edit", edit_question_answer_path(answer.question, answer) %>
+<%= link_to "delete", question_answer_path(answer.question, answer), method: :delete,
+data: { confirm: "Are you sure?"} %>

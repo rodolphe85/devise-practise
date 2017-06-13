@@ -1,0 +1,4 @@
+<%= simple_form_for([@question, @question.answers.build]) do |a| %>
+  <%= a.input :content, label: "Answer this question" %>
+  <%= a.button :submit %>
+<% end %>

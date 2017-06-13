@@ -24,7 +24,7 @@ class QuestionsController < ApplicationController
 
   def update #patch
     @question = Question.find(params[:id])
-      if @question.update_attributes(question_params)
+      if @question.update(question_params)
         redirect_to root_path
       else
         redirect_to edit_question_path
@@ -36,7 +36,7 @@ class QuestionsController < ApplicationController
   end
 
   def index
-    @questions = Question.order('created_at DESC')
+    @questions = Question.all.order('created_at DESC')
   end
 
   def destroy
