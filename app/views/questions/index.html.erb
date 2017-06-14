@@ -4,14 +4,25 @@
     <% @questions.each do |q| %>
       <ul>
         <li><h3><%= link_to(q.body, question_path(q)) %></h3></li>
-        <li>by: <%= q.user.name %></li><br>
-        <%#= render @question.answers %>
-        <% if current_user == q.user_id %>
-        <li><%= link_to "Delete", question_path(q),
-        method: :delete, data: { confirm: 'Are you sure ?' } %> |
-         <%= link_to "Edit", edit_question_path(q) %> |
+        <li class="signature">by: <%= q.user.name %></li><br>
+          <% q.answers[0..1].each do |a| %>
+            <ul>
+              <li><%= a.content %></li>
+              <li class="signature">Posted by <%= a.user.name %> <%= time_ago_in_words(a.created_at) %> ago</li>
+            </ul>
+            <ul>
+              <li>.....</li>
+            </ul>
+            <br>
+          <% end %>
+          <% if user_signed_in? %>
+          <% if current_user.id == q.user_id %>
+            <li><%= link_to "Delete", question_path(q),
+            method: :delete, data: { confirm: 'Are you sure ?' } %> |
+             <%= link_to "Edit", edit_question_path(q) %> |
+           <% end %>
          <% end %>
-         <%= link_to "Answer", new_question_answer_path(q) %></li>
+        <%= link_to "Answer", new_question_answer_path(q) %></li>
       </ul>
 
     <% end %>
