@@ -15,8 +15,8 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
-
 @import "questions.scss";
+@import "font-awesome";
 
 
 ul{
@@ -24,17 +24,23 @@ list-style-type: none;
 }
 
 body {
-  background-color: #337AB7;
+  background-color:   #7A95D2;
 }
 
 .jumbotron{
   background-color: #F2F2F2;
 }
 
-.navbar {
-  background-color: #FFD44D;
-  color: black;
+.navbar-default .navbar-nav>li>a{
+   background-color: #FF7E5C;
+  color: black !important;
 }
+.navbar-default{
+  background-color: #FF7E5C;
+  color: black !important;
+}
+
+
 
 .signature {
   color: #777777;
